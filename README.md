@@ -22,7 +22,8 @@ Can have an algorithm to control sending notification, rather than always send t
 * Survey notification may be sent 1/N time before the deadline, so it is more likely to be sent with some other notification so is not an individual interrupter.
 * When a question/task is assigned to a group of people, first ping one user, if it is not resolved in a while, ping the second user, and so on. Next action waiting time can be calibrated by (1) the size of the group, (2) how many people have been pinged. Actions like "looking emoji" or new reply may increase the waiting time (as that means one person is fully aware of the situation, and she can always ping the 2nd person manually).
 	* For new conversion in the same thread, the person is not notified if "read", and notified by the same policy she was originally pinged (so pinged immediately if she's the first person work on it. Original person who asked the questions is treated as another prioritized notification target (So two people will be involved in a conversation). If the first person is not replied and the 2nd person is pinged, first person goes to the end of the notification row (slightly different if the first person has ever been involved/has real action in the conversation) and the 2nd person will be notified immediately). 
-* Direct conversation and question/task assigned to a single person should be notified immediately (should we?).
+* Direct conversation and question/task assigned to a single person should be notified immediately.
+	* Should we? Or the person can always setup a customized delay. But in case that, we need to not count her delay if she is the first one chosen to assign for the group question. Also, what about if her delay is larger than some survey's timeout so she may never been notified.
 * Non-working hour means temporarily opt-out the notification group, and weight is re-calibrated when the person is back. Original sender should be notified if everybody is temporarily out-out.
 
 #### Clear history
@@ -81,7 +82,8 @@ People can both post on the group they belong to or not belong to. Just if they 
 * Open group: Everybody can join (so then access full content of that group channel + all other channels this group is @ed) as an "observer" (opt out notification). Management is needed for group "full member".
 * Private group: Everybody is a full member (so this unified Slack's "team").
 	* Can somebody leave a private group by herself (should be yes).
+* Everybody is always a one person private group that other people cannot join. 1-1 conversation stays in each other's private group.
 
-List of groups for a person is defined by open group / private group, so side bar group list and access right becomes the same thing.
+List of groups for a person is defined by open group / private group, so side bar group list and access right becomes the same thing. (Then what about if I am not in a group so it is not in my sidebar but people @ me or my group in that group and I suppose to have access to that information?)
 
 Then basically we unified group/channel/team with just open and private groups.
